@@ -1,3 +1,3 @@
 import { TelegramMessage } from './TelegramMessage';
 /** */
-export declare type TelegramAnonymousMessage = Omit<TelegramMessage, 'chat_id'>;
+export type TelegramAnonymousMessage = Omit<TelegramMessage, 'chat_id'>;

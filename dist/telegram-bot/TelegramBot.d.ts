@@ -1,4 +1,4 @@
-import { TelegramBotCommand, TelegramWebhook, TelegramWebhookInfo, TelegramMessage, TelegramUpdate } from './model';
+import { TelegramBotCommand, TelegramWebhook, TelegramWebhookInfo, TelegramMessage, TelegramUpdate, TelegramSendMessageResult } from './model';
 /** */
 export declare class TelegramBot {
     private readonly token;
@@ -19,7 +19,7 @@ export declare class TelegramBot {
     /** */
     getUpdates(offset?: number): Promise<TelegramUpdate[]>;
     /** */
-    sendMessage(message: TelegramMessage): Promise<void>;
+    sendMessage(message: TelegramMessage): Promise<TelegramSendMessageResult>;
     /** */
     setCommands(commands: TelegramBotCommand[]): Promise<void>;
     /** */
@@ -28,6 +28,10 @@ export declare class TelegramBot {
     getWebhookInfo(): Promise<TelegramWebhookInfo>;
     /** */
     deleteWebhook(): Promise<void>;
+    /** */
+    deleteMessage(chatId: number, messageId: number): Promise<void>;
+    /** */
+    deleteMessages(chatId: number, messageIds: number[]): Promise<void>;
     /** */
     static getNextUpdateId(updates: TelegramUpdate[]): number | undefined;
 }

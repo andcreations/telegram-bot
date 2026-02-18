@@ -10,6 +10,7 @@ import {
   TelegramWebhookInfo,
   TelegramMessage,
   TelegramUpdate,
+  TelegramSendMessageResult,
 } from './model';
 
 /** */
@@ -125,8 +126,11 @@ export class TelegramBot {
   }
 
   /** */
-  sendMessage(message: TelegramMessage): Promise<void> {
-    return this.post<TelegramMessage>('/sendMessage', message);
+  sendMessage(message: TelegramMessage): Promise<TelegramSendMessageResult> {
+    return this.post<TelegramMessage, TelegramSendMessageResult>(
+      '/sendMessage', 
+      message,
+    );
   }
 
   /** */
@@ -153,6 +157,28 @@ export class TelegramBot {
   /** */
   async deleteWebhook(): Promise<void> {
     return this.post('/deleteWebhook', {});
+  }
+
+  /** */
+  async deleteMessage(chatId: number, messageId: number): Promise<void> {
+    return this.post(
+      '/deleteMessage',
+      {
+        chat_id: chatId,
+        message_id: messageId,
+      },
+    );
+  }
+
+  /** */
+  async deleteMessages(chatId: number, messageIds: number[]): Promise<void> {
+    return this.post(
+      '/deleteMessages',
+      {
+        chat_id: chatId,
+        message_ids: messageIds,
+      },
+    );
   }
 
   /** */

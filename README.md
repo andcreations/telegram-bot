@@ -106,6 +106,20 @@ await bot.sendMessage({
 });
 ```
 
+## Deleting messages
+
+A single message or multiple messages from a single chat can be deleted using the following methods:
+
+```javascript
+const chatId = 2333444555;
+const msgId = 666;
+await bot.deleteMessage(chatId, msgId);
+
+const msgIds = [777, 888];
+await bot.deleteMessages(chatId, msgIds);
+```
+
+
 ## Telegram commands
 
 When a user starts a message with slash, Telegram displays matching bot commands. These can be set via the method `setCommands()`:
