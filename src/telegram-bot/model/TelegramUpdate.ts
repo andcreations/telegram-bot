@@ -1,4 +1,7 @@
-/** */
+import { TelegramChat } from './TelegramChat';
+import { TelegramUser } from './TelegramUser';
+
+/** @see https://core.telegram.org/bots/api#message */
 export interface TelegramUpdateMessage {
   /** */
   message_id: number;
@@ -10,46 +13,34 @@ export interface TelegramUpdateMessage {
   text: string;
 
   /** */
-  from: {
-    /** User/bot from which a message is received. */
-    id: number;
-
-    /** Indicates if the other side is a bot. */
-    is_bot: boolean;
-
-    /** */
-    first_name: string;
-
-    /** */
-    username: string;
-
-    /** */
-    language_code: string;
-  };
+  from: TelegramUser;
 
   /** */
-  chat: {
-    /** Chat identifier. */
-    id: number;
-
-    /** */
-    first_name: string;
-
-    /** */
-    username: string;
-
-    /** */
-    type: string;
-  }
+  chat: TelegramChat;
 }
 
-/** */
+/** @see https://core.telegram.org/bots/api#callbackquery */
+export interface TelegramUpdateCallbackQuery {
+  /** Unique identifier for this callback query. */
+  id: string;
+
+  /** */
+  from: TelegramUser;
+  
+  /** */
+  data: string;
+}
+
+/** @see https://core.telegram.org/bots/api#update */
 export interface TelegramUpdate {
   /** */
   update_id: number;
 
   /** */
-  message: TelegramUpdateMessage;
+  message?: TelegramUpdateMessage;
+
+  /** */
+  callback_query?: TelegramUpdateCallbackQuery;
 }
 
 /** */

@@ -18,6 +18,7 @@ __exportStar(require("./TelegramBotCommand"), exports);
 __exportStar(require("./TelegramWebhook"), exports);
 __exportStar(require("./TelegramWebhookInfo"), exports);
 __exportStar(require("./TelegramEntity"), exports);
+__exportStar(require("./TelegramUser"), exports);
 __exportStar(require("./TelegramUpdate"), exports);
 __exportStar(require("./TelegramMessage"), exports);
 __exportStar(require("./TelegramAnonymousMessage"), exports);

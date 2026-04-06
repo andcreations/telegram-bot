@@ -119,7 +119,6 @@ const msgIds = [777, 888];
 await bot.deleteMessages(chatId, msgIds);
 ```
 
-
 ## Telegram commands
 
 When a user starts a message with slash, Telegram displays matching bot commands. These can be set via the method `setCommands()`:
